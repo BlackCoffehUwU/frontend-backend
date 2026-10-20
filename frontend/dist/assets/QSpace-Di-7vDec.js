@@ -1,1 +1,0 @@
-import{E as e}from"./auth-Ddj3u2F8.js";import{Kt as t}from"./material-symbols-rounded-CUHWtSZP.js";var n=t({name:`QSpace`,setup(){let t=e(`div`,{class:`q-space`});return()=>t}});export{n as t};
