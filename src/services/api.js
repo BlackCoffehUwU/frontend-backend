@@ -2,11 +2,20 @@ import axios from "axios";
 import { useAuthStore } from "../stores/auth";
 import { Swal } from "../helpers/alerts";
 
-// Instancia unica de axios: la URL del backend se cambia en .env (VITE_API_URL)
+// Instancia unica de axios.
+// La URL del backend usa el MISMO host con el que se abrio la pagina
+// (localhost, 192.168.x.x, etc.), asi funciona aunque cambie la IP de la red.
+// Solo si defines VITE_API_URL en .env se usa esa direccion fija.
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  `http://${window.location.hostname}:4500/api`;
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:4500/api",
+  // Nunca "quemar" la URL en el codigo: viene del .env (VITE_API_URL).
+  //baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "/api",
   headers: { "Content-Type": "application/json" },
-  timeout: 15000,
+  timeout: 10000, // si el backend no responde en 10s, corta y avisa
 });
 
 // Inyecta el token (que vive en el store de Pinia persistido) en cada peticion.
