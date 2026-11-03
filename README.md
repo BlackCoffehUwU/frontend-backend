@@ -17,7 +17,7 @@ npm install
 npm run dev              # http://localhost:5173
 ```
 
-La URL del backend está en `.env` → `VITE_API_URL=http://localhost:4500/api`.
+axios usa automáticamente el mismo host con el que abres la página (puerto 4500), así funciona con cualquier IP de la red. Solo si el backend está en otra máquina, define `VITE_API_URL` en `.env`.
 
 ## Estructura
 

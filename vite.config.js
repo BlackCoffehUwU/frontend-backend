@@ -4,7 +4,7 @@ import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
 import { fileURLToPath } from "node:url";
 
 export default defineConfig({
-  server: { port: 5173 },
+  server: { port: 5173, host: true }, // host: true permite entrar desde otros equipos de la red
   plugins: [
     vue({ template: { transformAssetUrls } }),
     quasar({
